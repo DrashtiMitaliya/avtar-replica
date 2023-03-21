@@ -15,10 +15,15 @@ import { useDispatch } from 'react-redux';
 
 export const Cards = ({ users }) => {
 
-    const [show, setShow] = useState(true);
+  /* Used to set the state of the component. */
     const [heartColor, setColor] = useState(false);
     const [modalShow, setModalShow] = useState(false);
+
+   /* Used to dispatch an action to the store. */
     const dispatch = useDispatch()
+
+
+//  It sets the modal to show when the button is clicked.
 
     const handleUpdateProfile = () => {
         console.log('click');
@@ -28,6 +33,8 @@ export const Cards = ({ users }) => {
 
     return (
         <>
+
+           { /* A card component that is used to display the information of the user. */}
 
             <Card style={{ width: '20rem' }} className='m-3 p-0'>
                 <Information users={users}  show={modalShow} onHide={() => setModalShow(false)} />
@@ -43,13 +50,7 @@ export const Cards = ({ users }) => {
                 <Card.Body className='bg-light'>
                     <div className="row  m-auto text-center">
                         <div className="col"><button className='border-0 bg-transparent' onClick={() => setColor((prev) => !prev)}> {heartColor ? <AiFillHeart color='red' /> : <BsHeart />} </button></div>
-                        <div className="col"><button className='border-0 bg-transparent edit' onClick={handleUpdateProfile} > <AiOutlineEdit /> </button>              </div>
-                        {/* <div className="col"><button className='border-0 bg-transparent edit' onClick={() => setShow((prev) => !prev)} >{show ?  <AiOutlineEdit /> :  <Information /> }  </button>
-                        <Information
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                        />
-                    </div> */}
+                        <div className="col"><button className='border-0 bg-transparent edit' onClick={handleUpdateProfile} > <AiOutlineEdit /> </button></div>
                         <div className="col"><button className='border-0 bg-transparent  delete' onClick={() => dispatch(deleteAvtar(users.id))} >  <AiFillDelete /> </button></div>
                     </div>
                 </Card.Body>
